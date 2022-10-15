@@ -6,8 +6,17 @@ function Search({ items, setItems }) {
   function handleSubmit(e) {
     e.preventDefault();
     const displayItems = items.filter(item => item.description.includes(search))
-    search === '' ? setItems(items) : setItems(displayItems)
+
+    if (search === '') {
+      fetch('http://localhost:6001/listings')
+        .then(r => r.json())
+        .then(items => setItems(items))
+    } else {
+      setItems(displayItems)
+    }
   }
+
+  console.log(items)
 
   return (
     <form className="searchbar" onSubmit={handleSubmit}>
