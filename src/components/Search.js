@@ -15,9 +15,7 @@ function Search({ items, setItems }) {
       setItems(displayItems)
     }
   }
-
-  console.log(items)
-
+  
   return (
     <form className="searchbar" onSubmit={handleSubmit}>
       <input
